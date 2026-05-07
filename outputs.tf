@@ -11,4 +11,5 @@ output "secret_name" {
 output "secret_version_id" {
   description = "Full resource name of the secret version (projects/{project}/secrets/{secret_id}/versions/{version})."
   value       = google_secret_manager_secret_version.this.name
+  sensitive   = true
 }
