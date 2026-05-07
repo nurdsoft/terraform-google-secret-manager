@@ -8,6 +8,8 @@ module "secret" {
   replication_type      = "user_managed"
   replication_locations = ["us-central1", "us-east1"]
 
+  secret_version_deletion_policy = "DISABLE"
+
   labels = {
     env  = "production"
     team = "platform"
