@@ -32,7 +32,7 @@ variable "secret_data" {
 }
 
 variable "secret_version_deletion_policy" {
-  description = "Deletion policy applied to the secret version when it is replaced. \"DISABLE\" keeps the old version recoverable; \"DELETE\" permanently removes it; \"ABANDON\" removes it from state without destroying it."
+  description = "Deletion policy applied to the secret version when it is replaced. \"DISABLE\" keeps the old version recoverable; \"DELETE\" permanently removes it; \"ABANDON\" removes it from Terraform state without destroying it in GCP (intended for import/migration scenarios only)."
   type        = string
   default     = "DISABLE"
 

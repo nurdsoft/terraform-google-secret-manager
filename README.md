@@ -44,6 +44,8 @@ module "secret" {
   replication_type      = "user_managed"
   replication_locations = ["us-central1", "us-east1"]
 
+  secret_version_deletion_policy = "DISABLE"
+
   labels = {
     env  = "production"
     team = "platform"
@@ -130,7 +132,7 @@ $ git push --set-upstream origin feat/abc
 | secret\_data | The secret payload to store in the secret version | `string` | n/a | yes |
 | replication\_type | Replication policy: `automatic` or `user_managed` | `string` | `"automatic"` | no |
 | replication\_locations | GCP regions to replicate the secret into. Required when `replication_type` is `user_managed` | `list(string)` | `[]` | no |
-| secret\_version\_deletion\_policy | Deletion policy when a secret version is replaced: `DISABLE` keeps it recoverable, `DELETE` permanently removes it, `ABANDON` removes it from state only | `string` | `"DISABLE"` | no |
+| secret\_version\_deletion\_policy | Deletion policy when a secret version is replaced: `DISABLE` keeps it recoverable, `DELETE` permanently removes it, `ABANDON` removes it from Terraform state without destroying it in GCP (import/migration use only) | `string` | `"DISABLE"` | no |
 | labels | Labels to apply to the secret | `map(string)` | `{}` | no |
 
 ## Outputs
