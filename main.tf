@@ -31,8 +31,9 @@ resource "google_secret_manager_secret" "this" {
 }
 
 resource "google_secret_manager_secret_version" "this" {
-  secret      = google_secret_manager_secret.this.id
-  secret_data = var.secret_data
+  secret          = google_secret_manager_secret.this.id
+  secret_data     = var.secret_data
+  deletion_policy = var.secret_version_deletion_policy
 
   lifecycle {
     create_before_destroy = true

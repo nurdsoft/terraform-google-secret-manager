@@ -31,6 +31,17 @@ variable "secret_data" {
   sensitive   = true
 }
 
+variable "secret_version_deletion_policy" {
+  description = "Deletion policy applied to the secret version when it is replaced. \"DISABLE\" keeps the old version recoverable; \"DELETE\" permanently removes it; \"ABANDON\" removes it from state without destroying it."
+  type        = string
+  default     = "DISABLE"
+
+  validation {
+    condition     = contains(["DELETE", "DISABLE", "ABANDON"], var.secret_version_deletion_policy)
+    error_message = "secret_version_deletion_policy must be one of: DELETE, DISABLE, ABANDON."
+  }
+}
+
 variable "labels" {
   description = "Labels to apply to the secret."
   type        = map(string)
