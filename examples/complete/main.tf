@@ -10,6 +10,8 @@ module "secret" {
 
   secret_version_deletion_policy = "DISABLE"
 
+  deletion_protection = true
+
   labels = {
     env  = "production"
     team = "platform"

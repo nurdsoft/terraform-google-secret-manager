@@ -42,6 +42,12 @@ variable "secret_version_deletion_policy" {
   }
 }
 
+variable "deletion_protection" {
+  description = "When true, Terraform will be prevented from destroying the secret. Recommended for production secrets."
+  type        = bool
+  default     = false
+}
+
 variable "labels" {
   description = "Labels to apply to the secret."
   type        = map(string)

@@ -46,6 +46,8 @@ module "secret" {
 
   secret_version_deletion_policy = "DISABLE"
 
+  deletion_protection = true
+
   labels = {
     env  = "production"
     team = "platform"
@@ -133,6 +135,7 @@ $ git push --set-upstream origin feat/abc
 | replication\_type | Replication policy: `automatic` or `user_managed` | `string` | `"automatic"` | no |
 | replication\_locations | GCP regions to replicate the secret into. Required when `replication_type` is `user_managed` | `list(string)` | `[]` | no |
 | secret\_version\_deletion\_policy | Deletion policy when a secret version is replaced: `DISABLE` keeps it recoverable, `DELETE` permanently removes it, `ABANDON` removes it from Terraform state without destroying it in GCP (import/migration use only) | `string` | `"DISABLE"` | no |
+| deletion\_protection | When true, Terraform will be prevented from destroying the secret. Recommended for production secrets | `bool` | `false` | no |
 | labels | Labels to apply to the secret | `map(string)` | `{}` | no |
 
 ## Outputs
